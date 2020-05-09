@@ -11,9 +11,12 @@ var lines = input.split('\n');
 var pecas1 = lines.shift().split(' ')
 var pecas2 = lines.shift().split(' ')
 
-const peca1 = 
+const codPeca1 = pecas1[0]
+const numPeca1 = pecas1[1]
+const valorPeca1 = pecas1[2]
+const codPeca2 = pecas2[0]
+const numPeca2 = pecas2[1]
+const valorPeca2 = pecas2[2]
+const total = numPeca1*valorPeca1+numPeca2*valorPeca2
 
-const p1 = (pecas.p1[1]*pecas.p1[2])
-const p2 = (pecas.p1[1]*pecas.p1[2])
-
-console.log("VALOR A PAGAR: R$ " + (p1+p2).toFixed(2))
+console.log("VALOR A PAGAR: R$ " + total.toFixed(2))
