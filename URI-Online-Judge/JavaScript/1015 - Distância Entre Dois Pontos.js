@@ -8,7 +8,7 @@
 // Saída
 // Calcule e imprima o valor da distância segundo a fórmula fornecida, com 4 casas após o ponto decimal.
 
-var input = '1.0 7.0\n5.0 9.0' //require('fs').readFileSync('/dev/stdin', 'utf8'); 
+var input = '-2.5 0.4\n12.1 7.3' //require('fs').readFileSync('/dev/stdin', 'utf8'); 
 var lines = input.split('\n');
 var ponto1 = lines.shift().split(' ')
 var ponto2 = lines.shift().split(' ')
