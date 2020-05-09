@@ -6,13 +6,11 @@
 // Saída
 // Calcule e imprima a variável MEDIA conforme exemplo abaixo, com 5 dígitos após o ponto decimal e com um espaço em branco antes e depois da igualdade. Utilize variáveis de dupla precisão (double) e como todos os problemas, não esqueça de imprimir o fim de linha após o resultado, caso contrário, você receberá "Presentation Error".
 
-//var input = require('fs').readFileSync('/dev/stdin', 'utf8');
-//var lines = input.split('\n');
+var input = require('fs').readFileSync('/dev/stdin', 'utf8');
+var lines = input.split('\n');
 
-//const A = lines.shift()
-//const B = lines.shift()
-const A = 5.0
-const B = 7.1
+const A = lines.shift()
+const B = lines.shift()
 const MEDIA = (A*3.5+B*7.5)/11
 
 console.log("MEDIA = " + MEDIA.toFixed(5))
