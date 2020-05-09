@@ -11,10 +11,10 @@
 // Imprima o tempo necessário seguido da mensagem "minutos".
 
 var input = '30' //require('fs').readFileSync('/dev/stdin', 'utf8'); 
-var lines = input.split('\n');
+//var lines = input.split('\n');
 
-const distancia = Number(lines.shift())
+//const distancia = Number(lines.shift())
 const carroX = 60
 const carroY = 90
-const tempo = 60 * distancia / (carroY-carroX)
+const tempo = 60 * Number(input) / (carroY-carroX)
 console.log(tempo + " minutos")
