@@ -13,14 +13,14 @@
 var input = '3.0 4.0 5.2' //require('fs').readFileSync('/dev/stdin', 'utf8'); 
 var lines = input.split(' ');
 
-const A = lines.shift()
-const B = lines.shift()
-const C = lines.shift()
+const A = parseFloat(lines.shift())
+const B = parseFloat(lines.shift())
+const C = parseFloat(lines.shift())
 const pi = 3.14159
 
 const areaTriangulo = A*C/2
 const areaCirculo = pi * Math.pow(C,2)
-const areaTrapezio = (A+B) * C / 2
+const areaTrapezio = (A + B) * C / 2.0
 const areaQuadrado = B*B
 const areaRetangulo = A*B
 
