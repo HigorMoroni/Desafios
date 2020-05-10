@@ -18,28 +18,27 @@
 // Saída
 // Dado uma cor que aparece o maior número de vezes na fita do dispositivo após realizar a sequência de passos descrita na entrada, imprima uma única linha com um inteiro que indica o número de células contendo aquela cor.
 
-//var input = '7 5 2\n1 2 5 3\n3 3 0 1' //require('fs').readFileSync('/dev/stdin', 'utf8'); 
+var input = '7 5 2\n1 2 5 3\n3 3 0 1' //require('fs').readFileSync('/dev/stdin', 'utf8'); 
 var input = '7 10 8\n10 6 5 6\n5 1 7 5\n9 9 10 1\n3 2 6 7\n8 3 4 8\n3 7 7 4\n9 3 9 7\n1 1 8 1000' //require('fs').readFileSync('/dev/stdin', 'utf8'); 
 var lines = input.split('\n')
 let dados = []
 lines.shift().split(' ').forEach(valor=>dados.push(Number(valor)))
 const [L,C,N] = dados
 let celulas = []
-for(let i=1;i<=L;i++) celulas[i]=1
+for(let i=1;i<=L;i++) celulas[i]=0
 for(let j=1;j<=N;j++) {
     let inst = []
     lines.shift().split(' ').forEach(valor=>inst.push(Number(valor)))
     const [P,X,A,B] = inst
     let S = 0
     celulas.forEach(valor=>{if(valor == P)S++})
-    const M1 = (A+Math.pow(S,2))%L
+    const M1 = (A+S*S)%L
     const M2 = (A+(S+B)**2)%L
     const min = M1<M2?M1:M2
     const max = M1<M2?M2:M1
     for(let c=min;c<=max;c++) {
         celulas[c]=X
     }
-    console.log(P,X,A,B,S,M1,M2,min,max)
 }
 let vetorContador = []
 let maisVezes = 0
