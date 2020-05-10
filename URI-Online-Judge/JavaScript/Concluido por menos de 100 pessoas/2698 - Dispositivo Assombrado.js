@@ -18,21 +18,13 @@
 // Saída
 // Dado uma cor que aparece o maior número de vezes na fita do dispositivo após realizar a sequência de passos descrita na entrada, imprima uma única linha com um inteiro que indica o número de células contendo aquela cor.
 
-var input = '7 5 2\n1 2 5 3\n3 3 0 1' //require('fs').readFileSync('/dev/stdin', 'utf8'); 
-//var input = '7 10 8\n10 6 5 6\n5 1 7 5\n9 9 10 1\n3 2 6 7\n8 3 4 8\n3 7 7 4\n9 3 9 7\n1 1 8 1000' //require('fs').readFileSync('/dev/stdin', 'utf8'); 
-var lines = input.split('\n');
-const linha = lines.shift().split(' ')
-const informacoes = {
-    L: Number(linha[0]), // numero de celulas na fita
-    C: Number(linha[1]), // máximo de cores disponiveis
-    N: Number(linha[2]) // total de passos
-}
+//var input = '7 5 2\n1 2 5 3\n3 3 0 1' //require('fs').readFileSync('/dev/stdin', 'utf8'); 
+var input = '7 10 8\n10 6 5 6\n5 1 7 5\n9 9 10 1\n3 2 6 7\n8 3 4 8\n3 7 7 4\n9 3 9 7\n1 1 8 1000' //require('fs').readFileSync('/dev/stdin', 'utf8'); 
+var lines = input.split('\n')
+const [L,C,N] = lines.shift().split(' ')
+console.log(typeof L)
 let celulas = []
 let todosOsPassos = []
-
-for (let i=0;i<informacoes.L;i++) {
-    celulas.push(1)
-}
 
 class Passo {
     constructor (passo) {
@@ -41,8 +33,8 @@ class Passo {
         this.A = Number(passo[2]) // base de calculo
         this.B = Number(passo[3]) // base de calculo
         this.S = this.encontraP()// quantas celulas possuem cor P
-        this.M1 = (this.A+Math.pow(this.S,2))%informacoes.L
-        this.M2 = (this.A+Math.pow((this.S+this.B),2))%informacoes.L
+        this.M1 = (this.A+Math.pow(this.S,2))%L
+        this.M2 = (this.A+Math.pow((this.S+this.B),2))%L
         this.minimo = this.M1<this.M2 ? this.M1 : this.M2
         this.maximo = this.M1<this.M2 ? this.M2 : this.M1
         this.altera = this.alterarCores()
@@ -60,25 +52,32 @@ class Passo {
     }
 }
 
-for(let j=1;j<=informacoes.N;j++) {
+for(let j=1;j<=N;j++) {
     const array = lines.shift().split(' ')
     const passoAtual = new Passo(array)
     todosOsPassos.push(passoAtual)
 }
 
+let vetorContador = []
+let maisVezes = 0
+celulas.forEach(valor => {
+    if (!vetorContador[valor]) vetorContador[valor]=1
+    else vetorContador[valor]++
+    if (vetorContador[valor]>maisVezes) maisVezes=vetorContador[valor]
+})
 
-celulas.sort();
-var maior = null;
-var ocorrenciasMaior = -1;
-var contagem = 1;
-for ( var i = 1 ; i <= celulas.length ; i++ ) {
-  if ( i < celulas.length && celulas[i] == celulas[i-contagem] ) contagem++;
-  else if ( contagem > ocorrenciasMaior ) {
-    maior = celulas[i-1];
-    ocorrenciasMaior = contagem;
-  }
-}
+// celulas.sort();
+// var maior = null;
+// var ocorrenciasMaior = -1;
+// var contagem = 1;
+// for ( var i = 1 ; i <= celulas.length ; i++ ) {
+//   if ( i < celulas.length && celulas[i] == celulas[i-contagem] ) contagem++;
+//   else if ( contagem > ocorrenciasMaior ) {
+//     maior = celulas[i-1];
+//     ocorrenciasMaior = contagem;
+//   }
+// }
 
 console.log(todosOsPassos)
 console.log(celulas)
-console.log(ocorrenciasMaior)
+console.log(maisVezes)
