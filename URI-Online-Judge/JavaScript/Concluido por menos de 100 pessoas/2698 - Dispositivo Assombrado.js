@@ -18,8 +18,8 @@
 // Saída
 // Dado uma cor que aparece o maior número de vezes na fita do dispositivo após realizar a sequência de passos descrita na entrada, imprima uma única linha com um inteiro que indica o número de células contendo aquela cor.
 
-//var input = '7 5 2\n1 2 5 3\n3 3 0 1' //require('fs').readFileSync('/dev/stdin', 'utf8'); 
-var input = '7 10 8\n10 6 5 6\n5 1 7 5\n9 9 10 1\n3 2 6 7\n8 3 4 8\n3 7 7 4\n9 3 9 7\n1 1 8 1000' //require('fs').readFileSync('/dev/stdin', 'utf8'); 
+var input = '7 5 2\n1 2 5 3\n3 3 0 1' //require('fs').readFileSync('/dev/stdin', 'utf8'); 
+//var input = '7 10 8\n10 6 5 6\n5 1 7 5\n9 9 10 1\n3 2 6 7\n8 3 4 8\n3 7 7 4\n9 3 9 7\n1 1 8 1000' //require('fs').readFileSync('/dev/stdin', 'utf8'); 
 var lines = input.split('\n');
 const linha = lines.shift().split(' ')
 const informacoes = {
@@ -78,4 +78,7 @@ for ( var i = 1 ; i <= celulas.length ; i++ ) {
     ocorrenciasMaior = contagem;
   }
 }
+
+console.log(todosOsPassos)
+console.log(celulas)
 console.log(ocorrenciasMaior)
