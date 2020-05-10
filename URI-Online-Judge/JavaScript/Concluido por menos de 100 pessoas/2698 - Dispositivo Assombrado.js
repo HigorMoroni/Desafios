@@ -22,20 +22,22 @@
 //var input = '7 10 8\n10 6 5 6\n5 1 7 5\n9 9 10 1\n3 2 6 7\n8 3 4 8\n3 7 7 4\n9 3 9 7\n1 1 8 1000' //require('fs').readFileSync('/dev/stdin', 'utf8'); 
 var input = '37 8 20\n7 2 3 10\n7 7 5 1\n1 6 5 10\n6 4 6 0\n5 6 7 6\n3 3 2 5\n4 4 6 8\n4 2 0 5\n1 7 5 2\n1 5 0 10\n6 8 5 5\n4 2 7 4\n1 2 2 8\n1 7 4 3\n6 7 4 1\n6 7 4 6\n3 1 2 8\n3 6 10 0\n4 4 1 8\n8 2 2 9'
 var lines = input.split('\n')
-let dados = []
-lines.shift().split(' ').forEach(valor=>dados.push(Number(valor)))
-const [L,C,N] = dados
+let dados = lines.shift().split(' ')
+const L = Number(dados.shift())
+const C = Number(dados.shift())
+const N = Number(dados.shift())
 let celulas = []
-for(let i=1;i<=L;i++) celulas[i]=0
+for(let i=1;i<=L;i++) celulas.push(1)
 for(let j=1;j<=N;j++) {
-    let inst = []
-    lines.shift().split(' ').forEach(valor=>inst.push(Number(valor)))
-    const [P,X,A,B] = inst
+    const inst = lines.shift().split(' ')
+    const P = Number(inst.shift())
+    const X = Number(inst.shift())
+    const A = Number(inst.shift())
+    const B = Number(inst.shift())
     let S = 0
     celulas.forEach(valor=>{if(valor == P)S++})
-    const SB = S+B
     const M1 = (A+S*S)%L
-    const M2 = (A+SB*SB)%L
+    const M2 = (A+Math.pow((S+B),2))%L
     const min = M1<M2?M1:M2
     const max = M1<M2?M2:M1
     for(let c=min;c<=max;c++) {
@@ -43,10 +45,10 @@ for(let j=1;j<=N;j++) {
     }
 }
 let vetorContador = []
-let maisVezes = 0
+let numeroDeCelulas = 0
 celulas.forEach(valor => {
     if (!vetorContador[valor]) vetorContador[valor]=1
     else vetorContador[valor]++
-    if (vetorContador[valor]>maisVezes) maisVezes=vetorContador[valor]
+    if (vetorContador[valor]>numeroDeCelulas) numeroDeCelulas=vetorContador[valor]
 })
-console.log(maisVezes)
+console.log(numeroDeCelulas)
