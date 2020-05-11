@@ -44,11 +44,26 @@ for(let j=1;j<=N;j++) {
         celulas[c]=X
     }
 }
-let vetorContador = []
-let numeroDeCelulas = 0
-celulas.forEach(valor => {
-    if (!vetorContador[valor]) vetorContador[valor]=1
-    else vetorContador[valor]++
-    if (vetorContador[valor]>numeroDeCelulas) numeroDeCelulas=vetorContador[valor]
-})
-console.log(numeroDeCelulas)
+// MEU ALGORITMO INGENUO
+// let vetorContador = []
+// let numeroDeCelulas = 0
+// celulas.forEach(valor => {
+//     if (!vetorContador[valor]) vetorContador[valor]=1
+//     else vetorContador[valor]++
+//     if (vetorContador[valor]>numeroDeCelulas) numeroDeCelulas=vetorContador[valor]
+// })
+
+// ALGORITMO DE ORDENAÇÃO - O(n*log2 n)
+celulas.sort();
+var maior = null;
+var ocorrenciasMaior = -1;
+var contagem = 1;
+for ( var i = 1 ; i <= celulas.length ; i++ ) {
+  if ( i < celulas.length && celulas[i] == celulas[i-contagem] ) contagem++;
+  else if ( contagem > ocorrenciasMaior ) {
+    maior = celulas[i-1];
+    ocorrenciasMaior = contagem;
+  }
+}
+//console.log(numeroDeCelulas)
+console.log(ocorrenciasMaior)
