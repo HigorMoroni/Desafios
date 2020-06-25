@@ -6,7 +6,7 @@
 // Saída
 // A saída contém apenas um valor inteiro.
 
-var input = '3 -1 0 -2 2'
+var input = '3 -1 0 -2 2';
 //var input = '3 2' //require('fs').readFileSync('/dev/stdin', 'utf8');
 const valores = input.split(' ');
 
